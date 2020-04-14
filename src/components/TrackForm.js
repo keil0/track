@@ -7,6 +7,9 @@ import { Context as LocationContext } from "../context/LocationContext";
 // Components
 import Spacer from "./Spacer";
 
+// Hooks
+import useSaveTrack from "../hooks/useSaveTrack";
+
 const TrackForm = ({}) => {
   const {
     state: { name, recording, locations },
@@ -15,7 +18,7 @@ const TrackForm = ({}) => {
     changeName,
   } = useContext(LocationContext);
 
-  console.log(locations.length);
+  const [saveTrack] = useSaveTrack();
 
   return (
     <>
@@ -32,6 +35,11 @@ const TrackForm = ({}) => {
         ) : (
           <Button title="Start recording" onPress={startRecording} />
         )}
+      </Spacer>
+      <Spacer>
+        {!recording && locations.length ? (
+          <Button title="Save Recording" onPress={saveTrack} />
+        ) : null}
       </Spacer>
     </>
   );

@@ -4,6 +4,7 @@ import React, { useContext, useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView, withNavigationFocus } from "react-navigation";
 import { Text } from "react-native-elements";
+import { FontAwesome } from "@expo/vector-icons";
 
 // Hooks
 import useLocation from "../hooks/useLocation";
@@ -40,5 +41,10 @@ const TrackCreateScreen = ({ isFocused }) => {
 };
 
 const styles = StyleSheet.create({});
+
+TrackCreateScreen.navigationOptions = {
+  title: "Add track",
+  tabBarIcon: <FontAwesome name="plus" size={16} />,
+};
 
 export default withNavigationFocus(TrackCreateScreen);
